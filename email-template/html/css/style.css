@@ -1,0 +1,75 @@
+h1, p{
+    margin: 0;
+}
+
+#wrapper{
+    width: 600px;
+    margin: 20px auto 0;
+    padding: 10px;
+}
+
+#wrapper header {
+    border-bottom:  1px solid #808080;
+}
+
+#wrapper header .free-services{
+    color: #bc0555;
+    letter-spacing: 0.1rem;
+    border-bottom: 1px solid #8080803e;
+}
+
+#wrapper header .navbar-brand{
+    width: 30%;
+    margin: auto;
+}
+
+#wrapper header .discount p:first-child{
+    color: #ae7564;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+#wrapper header .discount p:nth-child(2){
+    font-size: 2.2rem;
+    letter-spacing: 0.1rem;
+}
+
+#wrapper header .discount p:last-child a{
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+    font-size: 1.2rem;
+}
+
+#wrapper main{
+    background-color: #e1e5e952;
+}
+
+#wrapper main div:first-child{
+    background-color: #363131;
+    color: #fff;
+    width: 170px;
+    margin: auto;
+    padding: 10px;
+}
+
+#wrapper main div:first-child p:first-child{
+    /* font-size: 12px; */
+    letter-spacing: 0.1rem;
+}
+
+#wrapper main div:first-child p:last-child{
+    font-size: 0.95rem;
+    letter-spacing: 0.48rem;
+    /* letter-spacing: 0.5rem; */
+}
+
+#wrapper main div:last-child h1{
+    font-size: 3rem;
+}
+
+#wrapper main div:last-child p:last-child .btn{
+    border-radius: 0;
+    padding:0.5rem 1rem ;
+}

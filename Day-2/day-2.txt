@@ -1,0 +1,3 @@
+# "heredoc" use hoche amra kono ekta line er vitor single or double quote dileo kono smssa hbe na.(Heredoc's are   equivalent to a double quoted string. That means any variables in the string will get substitued for their    respective values. We could rewrite the double quoted string example above as a heredoc:- $foo = 'bar'; echo    <<<EOT Hello $foo Goodbye! EOT; // Output:- // Hello bar // Goodbye!)
+
+**#** CSS ZEN GARDEN --> SITE.

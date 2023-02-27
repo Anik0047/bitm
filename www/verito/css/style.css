@@ -1,0 +1,101 @@
+@import url('bootstrap.min.css');
+@import url('all.min.css');
+
+
+
+header .top-header{
+    border-bottom: 1px solid #efefef;
+}
+
+header .top-header .container{
+    margin-bottom: -3px;
+    padding-top: 5px;
+}
+
+
+header .top-header .row .col-sm-6 .nav-link{
+    color: #858585;
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding:11px 10px 11px 10px;
+    border-left: 1px solid #efefef;
+}
+
+header .middle-part{
+    margin-top: 0.9375rem;
+}
+
+header .middle-part .row .col-sm-8 .nav-link{
+    font-size: 0.625rem;
+    font-weight: normal;
+    padding: 10px 7px 7px 7px;
+    display: block;
+    bottom: -1px;
+    /* z-index: 1000; */
+    color: #858585;
+    border-top: solid 1px transparent;
+    border-left: solid 1px transparent;
+    border-right: solid 1px transparent;
+}
+.width{
+    width:25%;
+}
+header .middle-part .row .col-sm-8 .nav-link .input-group {
+    margin-top: -10px;
+}
+
+
+header .middle-part .row .col-sm-8 .nav-link .input-group .form-control{
+    margin: 0;
+    font-size: 0.8rem;
+    height: 38px;
+    color: #999;
+    padding: 8px 20px;
+    background: #f6f6f6;
+    outline: none;
+    border-radius: 0;
+}
+
+header .middle-part .row .col-sm-8 .nav-link .input-group .form-control::placeholder{
+    color: #999;
+}
+
+header .middle-part .row .col-sm-8 .nav-link .input-group .input-group-text{
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: normal;
+    padding: 4px 12px;
+    border-radius: 0;
+}
+
+header .middle-part .row .col-sm-8 .nav-link .btn{
+    border-radius: 0;
+    margin-top: -9px;
+    padding: 0.375rem 2rem;
+}
+
+header .middle-part .row .col-sm-8 .nav-link .btn i{
+    font-size: 0.9rem;
+}
+
+header .middle-part .row .col-sm-8 .nav-link .btn span{
+    color: #fff;
+    padding-left: 0px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+
+
+
+@media (max-width:320px) {
+    html{
+        font-size: 0.8rem;
+    }
+}

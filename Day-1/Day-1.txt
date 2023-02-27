@@ -1,0 +1,12 @@
+*Full Meaning ->
+PHP - Personal Home Page.
+CBLM - Competensy Based Learning Marterial.
+
+
+
+# "." er kaj hoilo variable r string ke jora laganor jnno dot use kora hoise.
+# "define" use krle or naam ta upercase diye likhte hbe.
+# "'" single quote er vitore jai thakbe sob a display teh dekhabe.(jodi variable show korate hoi thle "." use kore  krte hbe. code:day-1-74-76)
+# " " " double quote er vitore string thakle seta dekhabe kintu jodi variable thake thle sei variable value ta show  krbe.
+# "\" escape character. quote belai use hoi.ex($my_school = 'Motijheel Govt. Girls\' High School';
+ echo $my_school;).
