@@ -1,6 +1,6 @@
 <?php
 
-print_r($_POST);
+// print_r($_POST);
 $_id = $_POST['id'];
 $_title = $_POST['title'];
 $_link = $_POST['link'];
@@ -32,6 +32,8 @@ if(array_key_exists('is_active', $_POST)){
 }else{
   $_is_active = 0;
 }
+
+// coz checkbox e check na krle oi field tai post e add hoi na 
 
 
 $_modified_at = date('Y-m-d H:i:s',time());
