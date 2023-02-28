@@ -11,7 +11,7 @@ $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password)
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // get query
-$query = "SELECT * FROM `categories` WHERE is_deleted = 0";
+$query = "SELECT * FROM `categories` WHERE is_deleted = 1";
 
 $stmt = $conn->prepare($query);
 
@@ -41,14 +41,6 @@ $categorys = $stmt->fetchAll();
     <div class="row justify-content-center">
       <div class="col-sm-6">
         <h1 class="text-center mb-4">Category List: </h1>
-        <ul class="nav justify-content-center fw-bold fs-4">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="create.php">Add an item</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="trash_index.php">Trash item</a>
-                        </li>
-                    </ul>
         <table class="table table-secondary table-hover table-bordered">
           <thead>
             <tr class=" text-center">
@@ -66,9 +58,8 @@ $categorys = $stmt->fetchAll();
                   ?>
                 </td>
                 <td>
-                  <a href="show.php?id=<?= $category['id']; ?>">Show</a> |
-                  <a href="edit.php?id=<?= $category['id']; ?>">Edit</a> |
-                  <a href="trash.php?id=<?= $category['id']; ?>">Trash</a>
+                  <a href="restore.php?id=<?= $category['id']; ?>">restore</a> |
+                  <a href="delete.php?id=<?= $category['id']; ?>" onclick="return confirm('Are you sure you want to delete?') ">Delete</a>
                 </td>
 
               </tr>

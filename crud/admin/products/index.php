@@ -7,7 +7,7 @@ $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password)
 // set the PDO error mode to exception
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$query = "SELECT * FROM `products`";
+$query = "SELECT * FROM `products` WHERE is_deleted = 0";
 
 $stmt = $conn->prepare($query);
 
@@ -44,7 +44,7 @@ $products = $stmt->fetchALL();
                           <a class="nav-link text-secondary" href="create.php">Add an item</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link text-secondary" href="#">Link</a>
+                          <a class="nav-link text-secondary" href="trash_index.php">Trash file</a>
                         </li>
                     </ul>
                     <table class="table table-bordered">
@@ -70,7 +70,9 @@ $products = $stmt->fetchALL();
                                 <td><?= $product['description'];?></td>
                                 <td><?= $product['productType'];?></td>
                                 <td><?= $product['picture'];?></td>
-                                <td><a href="show.php?id=<?= $product['id'];?>">Show</a> | <a href="edit.php?id=<?= $product['id'];?>">Edit</a> | <a href="delete.php?id=<?= $product['id'];?>" onclick="return confirm('Are you ready to delete this')" > Delete</a></td>
+                                <td>
+                                    <a href="show.php?id=<?= $product['id'];?>">Show</a> | <a href="edit.php?id=<?= $product['id'];?>">Edit</a> | <a href="trash.php?id=<?= $product['id'];?>">Trash</a>
+                                </td>
                             </tr>
 
                             <?php

@@ -7,7 +7,7 @@ $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password)
 // set the PDO error mode to exception
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$query = "SELECT * FROM `banners` WHERE is_deleted = 0";
+$query = "SELECT * FROM `banners` WHERE is_deleted = 1";
 
 $stmt = $conn->prepare($query);
 
@@ -38,13 +38,13 @@ $banners = $stmt->fetchALL();
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-8">
-                    <h1 class="text-center mb-4">Lists</h1>
+                    <h1 class="text-center mb-4">All Trash Item</h1>
                     <ul class="nav justify-content-center fw-bold fs-4">
                         <li class="nav-item">
-                          <a class="nav-link text-secondary" href="create.php">Add an item</a>
+                          <a class="nav-link text-secondary" href="index.php">Item list</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link text-secondary" href="trash_index.php">Trash item</a>
+                          <a class="nav-link text-secondary" href="#">Link</a>
                         </li>
                     </ul>
                     <table class="table table-bordered">
@@ -65,7 +65,7 @@ $banners = $stmt->fetchALL();
                                 <td><?= $banner['title'];?></td>
                                 <td><?= $banner['link'];?></td>
                                 <td>
-                                    <a href="show.php?id=<?= $banner['id'];?>">Show</a> | <a href="edit.php?id=<?= $banner['id'];?>">Edit</a> | <a href="trash.php?id=<?= $banner['id'];?>">Trash</a>
+                                    <a href="restore.php?id=<?= $banner['id'];?>">Restore</a> | <a href="delete.php?id=<?= $banner['id'];?>" onclick="return confirm('Are you ready to delete this')" > Delete</a>
                                 </td>
                             </tr>
  

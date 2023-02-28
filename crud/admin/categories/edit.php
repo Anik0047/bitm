@@ -22,7 +22,7 @@ $result = $stmt->execute();
 
 $category = $stmt->fetch();
 
-var_dump($category);
+// var_dump($category);
 // print_r($category);
 
 // var_dump($result);
@@ -58,7 +58,7 @@ var_dump($category);
                             <h5>Name : </h5>
                         </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control rounded-0" id="inputName" name="name" value="<?= $category['categoryName']; ?>">
+                            <input type="text" class="form-control rounded-0" id="inputName" name="name" value="<?= $category['category-name']; ?>">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -68,18 +68,6 @@ var_dump($category);
                         <div class="col-sm-9">
                             <input type="text" class="form-control rounded-0" id="inputLink" name="link" value="<?= $category['link']; ?>">
                         </div>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="1" id="flexCheckDraft" name="action" <?= $category['typeAction'] === 1 ? "checked" : "" ?>>
-                        <label class="form-check-label" for="flexCheckDraft">
-                            <h6>Is Draft</h6>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="0" id="flexCheckDelete" name="action" <?= $category['typeAction'] === 0 ? "checked" : "" ?>>
-                        <label class="form-check-label" for="flexCheckDelete">
-                            <h6>Soft Delete</h6>
-                        </label>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-secondary rounded-0">Submit</button>

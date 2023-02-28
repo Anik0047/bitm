@@ -1,6 +1,7 @@
 <?php
 
 $_id = $_GET['id'];
+$_is_deleted = 0;
 
 $servername = "localhost";
 $username = "root";
@@ -11,16 +12,17 @@ $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password)
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-$query = "DELETE FROM banners WHERE `banners`.`id` = :id";
+$query = "UPDATE `products` SET `is_deleted` = :is_deleted WHERE `products`.`id` = :id;";
 
 $stmt = $conn->prepare($query);
 
 $stmt->bindParam(':id', $_id);
+$stmt->bindParam(':is_deleted', $_is_deleted);
 
 $result = $stmt->execute();
 
 // var_dump($result);
 
-// header("location:index.php");
+header("location:index.php");
 
 ?>

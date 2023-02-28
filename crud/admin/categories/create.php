@@ -36,18 +36,6 @@
                             <input type="text" class="form-control rounded-0" id="inputLink" name="link" value="">
                         </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="1" id="flexCheckDraft" name="action">
-                        <label class="form-check-label" for="flexCheckDraft">
-                            <h6>Is Draft</h6>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" value="0" id="flexCheckDelete" name="action" checked>
-                        <label class="form-check-label" for="flexCheckDelete">
-                            <h6>Soft Delete</h6>
-                        </label>
-                    </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-secondary rounded-0">Submit</button>
 

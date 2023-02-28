@@ -7,15 +7,15 @@ $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password)
 // set the PDO error mode to exception
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$query = "SELECT * FROM `banners` WHERE is_deleted = 0";
+$query = "SELECT * FROM `products` WHERE is_deleted = 1";
 
 $stmt = $conn->prepare($query);
 
 $result = $stmt->execute();
 
-$banners = $stmt->fetchALL();
+$products = $stmt->fetchALL();
 
-// var_dump($banners);
+// var_dump($products);
 
 ?>
 
@@ -41,40 +41,46 @@ $banners = $stmt->fetchALL();
                     <h1 class="text-center mb-4">Lists</h1>
                     <ul class="nav justify-content-center fw-bold fs-4">
                         <li class="nav-item">
-                          <a class="nav-link text-secondary" href="create.php">Add an item</a>
+                          <a class="nav-link text-secondary" href="create.php">Create an item</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link text-secondary" href="trash_index.php">Trash item</a>
+                          <a class="nav-link text-secondary" href="index.php">Item List</a>
                         </li>
                     </ul>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Title</th>
-                                <th scope="col">link</th>
+                                <th scope="col">Short Description</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Product Type</th>
+                                <th scope="col">Picture</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            if(count($banners) > 0):
-                            foreach($banners as $banner):
+                            if(count($products) > 0):
+                            foreach($products as $product):
                             ?>
 
                             <tr>
-                                <td><?= $banner['title'];?></td>
-                                <td><?= $banner['link'];?></td>
+                                <td><?= $product['title'];?></td>
+                                <td><?= $product['shortDescription'];?></td>
+                                <td><?= $product['description'];?></td>
+                                <td><?= $product['productType'];?></td>
+                                <td><?= $product['picture'];?></td>
                                 <td>
-                                    <a href="show.php?id=<?= $banner['id'];?>">Show</a> | <a href="edit.php?id=<?= $banner['id'];?>">Edit</a> | <a href="trash.php?id=<?= $banner['id'];?>">Trash</a>
+                                    <a href="restore.php?id=<?= $product['id'];?>">Restore</a> | <a href="delete.php?id=<?= $product['id'];?>" onclick="return confirm('Are you ready to delete this')" > Delete</a>
                                 </td>
                             </tr>
- 
+
                             <?php
                             endforeach;
-                         else:
+                        else:
                             ?>
                             <tr>
-                                <td colspan="2">No banner is avaiable. <a href="create.php">Click here to add one.</a> </td>
+                                <td colspan="2">No product is avaiable. <a href="create.php">Click here to add one.</a> </td>
                             </tr>
                             <?php
                             endif;

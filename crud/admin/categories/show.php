@@ -24,7 +24,7 @@ $result = $stmt->execute();
 
 $category = $stmt->fetch();
 
-var_dump($category);
+// var_dump($category);
 // print_r($category);
 
 // var_dump($result);
@@ -50,11 +50,13 @@ var_dump($category);
                     <dt class="col-sm-3">Id</dt>
                     <dd class="col-sm-9"><?= $category['id'] ?></dd>
                     <dt class="col-sm-3">Name</dt>
-                    <dd class="col-sm-9"><?= $category['categoryName'] ?></dd>
+                    <dd class="col-sm-9"><?= $category['category-name'] ?></dd>
                     <dt class="col-sm-3">Link</dt>
                     <dd class="col-sm-9"><?= $category['link'] ?></dd>
-                    <dt class="col-sm-3">Action</dt>
-                    <dd class="col-sm-9"><?= $category['typeAction'] === 1 ? "Is Draft" : "Soft Delete" ?></dd>
+                    <dt class="col-sm-3">Created_at</dt>
+                    <dd class="col-sm-9"><?= $category['created_at'] ?></dd>
+                    <dt class="col-sm-3">modified_at</dt>
+                    <dd class="col-sm-9"><?= $category['modified_at'] ?></dd>
                 </dl>
             </div>
         </div>
