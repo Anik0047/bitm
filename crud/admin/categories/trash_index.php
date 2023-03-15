@@ -1,28 +1,13 @@
 <pre>
 <?php
-//  connection to database
+$approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+include_once($approot . 'vendor/autoload.php');
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+use Seip\Categories;
 
-// get query
-$query = "SELECT * FROM `categories` WHERE is_deleted = 1";
-
-$stmt = $conn->prepare($query);
-
-$result = $stmt->execute();
-
-$categorys = $stmt->fetchAll();
-
-// var_dump($banners);
-// print_r($banners);
-
-// var_dump($result);
+$_categorys = new Categories();
+$categorys = $_categorys->trash_index();
 ?>
 </pre>
 

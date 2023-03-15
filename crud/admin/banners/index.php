@@ -1,22 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$query = "SELECT * FROM `banners` WHERE is_deleted = 0";
-
-$stmt = $conn->prepare($query);
-
-$result = $stmt->execute();
-
-$banners = $stmt->fetchALL();
-
-// var_dump($banners);
-
+include_once($_SERVER['DOCUMENT_ROOT'] . '/php/crud/config.php');
+use Seip\Banners;
+$_banners = new Banners();
+$banners = $_banners->index();
 ?>
 
 

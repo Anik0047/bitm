@@ -10,7 +10,7 @@ include_once('vendor/autoload.php');
 // include_once("class/product/virtual/course.php");
 
 
-use App\class\customer\Person;
+use App\customer\Person;
 use App\product\physical\book;
 
 
@@ -25,7 +25,7 @@ echo "<br>";
 echo $abdullah->name . " is " . $abdullah->height . " tall.";
 echo "<br>";
 
-$fatima = new  App\class\customer\Person();
+$fatima = new Person();
 echo $fatima->talk();
 echo "<br>";
 

@@ -1,28 +1,13 @@
 <pre>
 <?php
-//  connection to database
+$approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+include_once($approot . 'vendor/autoload.php');
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+use Seip\Categories;
 
-// get query
-$query = "SELECT * FROM `categories` WHERE is_deleted = 0";
-
-$stmt = $conn->prepare($query);
-
-$result = $stmt->execute();
-
-$categorys = $stmt->fetchAll();
-
-// var_dump($banners);
-// print_r($banners);
-
-// var_dump($result);
+$_categorys = new Categories();
+$categorys = $_categorys->index();
 ?>
 </pre>
 
@@ -42,13 +27,13 @@ $categorys = $stmt->fetchAll();
       <div class="col-sm-6">
         <h1 class="text-center mb-4">Category List: </h1>
         <ul class="nav justify-content-center fw-bold fs-4">
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="create.php">Add an item</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-secondary" href="trash_index.php">Trash item</a>
-                        </li>
-                    </ul>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="create.php">Add an item</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="trash_index.php">Trash item</a>
+          </li>
+        </ul>
         <table class="table table-secondary table-hover table-bordered">
           <thead>
             <tr class=" text-center">

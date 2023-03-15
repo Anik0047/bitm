@@ -1,28 +1,14 @@
 <?php
 
-$_id = $_GET['id'];
-$_is_deleted = 1;
+$root = "http://localhost/php/crud/";
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include_once($approot . 'vendor/autoload.php');
 
+use Seip\Products;
 
-$query = "UPDATE `products` SET `is_deleted` = :is_deleted WHERE `products`.`id` = :id;";
-
-$stmt = $conn->prepare($query);
-
-$stmt->bindParam(':id', $_id);
-$stmt->bindParam(':is_deleted', $_is_deleted);
-
-$result = $stmt->execute();
-
-// var_dump($result);
-
-header("location:index.php");
+$_products = new Products();
+$product = $_products->trash();
 
 ?>

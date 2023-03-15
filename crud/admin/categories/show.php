@@ -1,33 +1,15 @@
 <pre>
 <?php
 
-$_id = $_GET['id'];
-// $_id=1;
-//  connection to database
+$approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+include_once($approot . 'vendor/autoload.php');
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+use Seip\Categories;
 
-// get query
-$query = "SELECT * FROM `categories` where id = :id ";
+$_categorys = new Categories();
+$category = $_categorys->show();
 
-$stmt = $conn->prepare($query);
-
-$stmt->bindParam(':id', $_id);
-
-$result = $stmt->execute();
-
-$category = $stmt->fetch();
-
-// var_dump($category);
-// print_r($category);
-
-// var_dump($result);
 ?>
 </pre>
 

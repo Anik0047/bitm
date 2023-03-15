@@ -1,33 +1,12 @@
 <pre>
     <?php
-    var_dump($_POST);
-    $_categoryName = $_POST['name'];
-    $_link = $_POST['link'];
-   $_created_at = date('Y-m-d H:i:s',time());
+    $approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
 
+    include_once($approot . 'vendor/autoload.php');
 
-    //  connection to database
+    use Seip\Categories;
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // // insert query 
-    $query = "INSERT INTO  `categories` (`category-name`, `link`, `created_at`) VALUES (:categoryName, :link, :created_at);";
-
-    $stmt = $conn->prepare($query);
-
-    $stmt->bindParam(':categoryName', $_categoryName);
-    $stmt->bindParam(':link', $_link);
-    $stmt->bindParam(':created_at', $_created_at);
-
-    $result = $stmt->execute();
-
-    var_dump($result);
-    header("location:index.php");
+    $_categorys = new Categories();
+    $categorys = $_categorys->store();
     ?>
 </pre>

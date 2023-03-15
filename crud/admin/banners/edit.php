@@ -1,26 +1,12 @@
 <?php
 
-$root = "http://localhost/php/crud/";
 
-$_id = $_GET['id'];
+include_once($_SERVER['DOCUMENT_ROOT'] . '/php/crud/config.php');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+use Seip\Banners;
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-$query = "SELECT * FROM `banners` Where id = :id"; 
-
-$stmt = $conn->prepare($query);
-
-$stmt->bindParam(':id', $_id);
-
-$result = $stmt->execute();
-
-$banner = $stmt->fetch();
+$_banners = new Banners();
+$banner = $_banners->edit();
 
 ?>
 
@@ -52,31 +38,37 @@ $banner = $stmt->fetch();
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputTitle" class="col-sm-2 col-form-label"><h5>Title:</h5></label>
+                            <label for="inputTitle" class="col-sm-2 col-form-label">
+                                <h5>Title:</h5>
+                            </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputTitle" name="title" value="<?= $banner['title']; ?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputlink" class="col-sm-2 col-form-label"><h5>link:</h5></label>
+                            <label for="inputlink" class="col-sm-2 col-form-label">
+                                <h5>link:</h5>
+                            </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputlink" name="link" value="<?= $banner['link']; ?>">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="form-check-label col-sm-3" for="inputIsActive">
-                            Is Active
+                                Is Active
                             </label>
                             <div class="col-sm-9">
-                                <input class="form-check-input" type="checkbox" value="1" id="inputIsActive" <?=$banner['is_active']? 'checked' : '' ?>   name="is_active">
+                                <input class="form-check-input" type="checkbox" value="1" id="inputIsActive" <?= $banner['is_active'] ? 'checked' : '' ?> name="is_active">
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="picture" class="col-sm-2 col-form-label"><h5>Picture:</h5></label>
+                            <label for="picture" class="col-sm-2 col-form-label">
+                                <h5>Picture:</h5>
+                            </label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" id="picture" name="picture" value="<?= $banner['picture']; ?>">
-                                <img class="img-fluid" src="<?= $root ?>uploads/<?= $banner['picture']?>" alt="">
-                                <input type="hidden" name = "old_picture" value = "<?= $banner['picture']?>">
+                                <img class="img-fluid" src="<?= $root ?>uploads/<?= $banner['picture'] ?>" alt="">
+                                <input type="hidden" name="old_picture" value="<?= $banner['picture'] ?>">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-secondary">Submit</button>

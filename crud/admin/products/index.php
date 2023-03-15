@@ -1,19 +1,13 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
 
-$conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-// set the PDO error mode to exception
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$approot = $_SERVER['DOCUMENT_ROOT']. '/php/crud/';
 
-$query = "SELECT * FROM `products` WHERE is_deleted = 0";
+include_once($approot . 'vendor/autoload.php');
 
-$stmt = $conn->prepare($query);
+use Seip\Products;
 
-$result = $stmt->execute();
-
-$products = $stmt->fetchALL();
+$_products = new Products();
+$products = $_products->index();
 
 // var_dump($products);
 

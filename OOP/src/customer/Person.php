@@ -1,6 +1,6 @@
 <?php
 
-namespace App\class\customer;
+namespace App\customer;
 class Person
 {
     public $name = null;
