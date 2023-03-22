@@ -23,6 +23,22 @@ class Banners
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
+    public function getActiveBanners()
+    {
+        $_startForm = 0;
+        $_total = 2;
+
+        $query = "SELECT * FROM `banners` WHERE is_active = 1 LIMIT $_startForm, $_total";
+
+        $stmt = $this->conn->prepare($query);
+
+        $result = $stmt->execute();
+
+        $banners = $stmt->fetchALL();
+
+        return $banners;
+    }
+
     public function index()
     {
 
@@ -43,7 +59,7 @@ class Banners
 
         // var_dump($_FILES);\
 
-        $approot = $_SERVER['DOCUMENT_ROOT'] . "/PHP/crud/";
+        $approot = $_SERVER['DOCUMENT_ROOT'] ."/php/crud/";
         // change korte hbe destination tah
         $_title = $_POST['title'];
         $_link = $_POST['link'];
@@ -68,6 +84,9 @@ class Banners
             $_picture = null;
         }
         // picture er kaj shesh ekhane.
+
+        
+
         $_created_at = date('Y-m-d H:i:s', time());
         // echo $_title;
 
@@ -135,7 +154,7 @@ class Banners
         $_title = $_POST['title'];
         $_link = $_POST['link'];
 
-        $approot = $_SERVER['DOCUMENT_ROOT'] . "/PHP/crud/";
+        $approot = $_SERVER['DOCUMENT_ROOT'] . "/php/crud/";
 
 
         if (($_FILES['picture']['name']) !== "") {

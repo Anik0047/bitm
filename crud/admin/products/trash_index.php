@@ -1,9 +1,5 @@
 <?php
-$root = "http://localhost/php/crud/";
-
-$approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
-
-include_once($approot . 'vendor/autoload.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/php/crud/config.php');
 
 use Seip\Products;
 

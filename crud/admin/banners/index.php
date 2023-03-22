@@ -39,6 +39,7 @@ $banners = $_banners->index();
                             <tr>
                                 <th scope="col">Title</th>
                                 <th scope="col">link</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -51,6 +52,7 @@ $banners = $_banners->index();
                             <tr>
                                 <td><?= $banner['title'];?></td>
                                 <td><?= $banner['link'];?></td>
+                                <td><?= $banner['is_active']? "Active" : "Inactive";?></td>
                                 <td>
                                     <a href="show.php?id=<?= $banner['id'];?>">Show</a> | <a href="edit.php?id=<?= $banner['id'];?>">Edit</a> | <a href="trash.php?id=<?= $banner['id'];?>">Trash</a>
                                 </td>

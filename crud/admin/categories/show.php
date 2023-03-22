@@ -1,9 +1,7 @@
 <pre>
 <?php
 
-$approot = $_SERVER['DOCUMENT_ROOT'] . '/php/crud/';
-
-include_once($approot . 'vendor/autoload.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/php/crud/config.php');
 
 use Seip\Categories;
 

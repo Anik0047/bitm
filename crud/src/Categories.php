@@ -6,20 +6,32 @@ use PDO;
 
 class Categories
 {
-    public function index()
+
+    public $_categoryName = null;
+    public $_link = null;
+
+    public $conn = null;
+
+
+    public function __construct()
     {
         $servername = "localhost";
         $username = "root";
         $password = "";
 
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
+        $this->conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
         // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+
+    public function index()
+    {
+        
 
         // get query
         $query = "SELECT * FROM `categories` WHERE is_deleted = 0";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $result = $stmt->execute();
 
@@ -35,20 +47,14 @@ class Categories
         $_created_at = date('Y-m-d H:i:s', time());
 
 
-        //  connection to database
+        //  this->connection to database
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
 
         // // insert query 
         $query = "INSERT INTO  `categories` (`category-name`, `link`, `created_at`) VALUES (:categoryName, :link, :created_at);";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':categoryName', $_categoryName);
         $stmt->bindParam(':link', $_link);
@@ -65,20 +71,14 @@ class Categories
     {
         $_id = $_GET['id'];
         // $_id=1;
-        //  connection to database
+        //  this->connection to database
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
 
         // get query
         $query = "SELECT * FROM `categories` where id = :id ";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':id', $_id);
 
@@ -93,19 +93,13 @@ class Categories
     {
         $_id = $_GET['id'];
 
-        // database connection 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // database this->connection 
+        
 
         // get query
         $query = "SELECT * FROM `categories` where id = :id ";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':id', $_id);
 
@@ -123,18 +117,12 @@ class Categories
         $_link = $_POST['link'];
         $_modified_at = date('Y-m-d H:i:s', time());
 
-        // database connection 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // database this->connection 
+        
 
         $query = "UPDATE `categories` SET `category-name` = :categoryName, `link` = :link, `modified_at` = :modified_at WHERE `categories`.`id` = :id";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':id', $_id);
         $stmt->bindParam(':categoryName', $_categoryName);
@@ -156,21 +144,15 @@ class Categories
     {
         $_id = $_GET['id'];
         $_is_deleted = 1;
-        //  connection to database
+        //  this->connection to database
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
 
         // get query
         $query = "UPDATE `categories` SET `is_deleted` = :is_deleted WHERE `categories`.`id` = :id";
 
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':id', $_id);
         $stmt->bindParam(':is_deleted', $_is_deleted);
@@ -184,19 +166,14 @@ class Categories
         return $result;
     }
 
-    public function trash_index(){
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    public function trash_index()
+    {
+        
 
         // get query
         $query = "SELECT * FROM `categories` WHERE is_deleted = 1";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $result = $stmt->execute();
 
@@ -205,24 +182,19 @@ class Categories
         return $categorys;
     }
 
-    public function restore(){
+    public function restore()
+    {
         $_id = $_GET['id'];
         $_is_deleted = 0;
-        //  connection to database
+        //  this->connection to database
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
 
         // get query
         $query = "UPDATE `categories` SET `is_deleted` = :is_deleted WHERE `categories`.`id` = :id";
 
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':id', $_id);
         $stmt->bindParam(':is_deleted', $_is_deleted);
@@ -236,22 +208,17 @@ class Categories
         return $result;
     }
 
-    public function delete(){
+    public function delete()
+    {
         $_id = $_GET['id'];
-        //  connection to database
+        //  this->connection to database
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-
-        $conn = new PDO("mysql:host=$servername;dbname=project_9", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
 
         // get query
         $query = "DELETE FROM categories WHERE `categories`.`id` = :id";
 
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':id', $_id);
 
